@@ -1,0 +1,2 @@
+module RecipezsHelper
+end
