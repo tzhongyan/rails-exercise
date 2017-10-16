@@ -5,3 +5,27 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Recipez.create([
+    {
+        title: 'Chebureki',
+        region: 'Slavic'
+    }, {
+        title: 'Kvass',
+        region: 'Blaytiful'
+    }, {
+        title: 'Potato chips',
+        region: 'US of A'
+    }
+])
+
+User.create([
+    {
+        id:11,
+        email:'user@email.com', 
+        encrypted_password:'',
+        sign_in_count:0, 
+        created_at:'2007-10-10 10:00.00', 
+        updated_at:'2009-10-10 10:00.00', 
+        password:'password'
+    }
+])
