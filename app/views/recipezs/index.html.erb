@@ -1,74 +1,69 @@
-<div class="container">
-
-  <% if user_signed_in? %>
-    <li>
-    <%= link_to('Logout', destroy_user_session_path, method: :delete) %>        
-    </li>
-  <% else %>
-    <li>
-      <ul><%= link_to('Sign-In', new_user_session_path)  %> </ul>
-      <ul><%= link_to('New User?', new_user_registration_path)  %> </ul>
-    </li>
-    
-  <% end %>
-
-  <p id="notice"><%= notice %></p>
+<% if user_signed_in? %>
+  <li>
+  <%= link_to('Logout', destroy_user_session_path, method: :delete) %>        
+  </li>
+<% else %>
+  <li>
+    <ul><%= link_to('Sign-In', new_user_session_path)  %> </ul>
+    <ul><%= link_to('New User?', new_user_registration_path)  %> </ul>
+  </li>
   
-  <h1>List Recipes</h1>
+<% end %>
 
-  <% if @recipezs.blank? %>
-    <p style = "color:red"> Recipe not found </p>
+<h1>List Recipes</h1>
 
-  <% else %>
-    <div class="table-responsive">
-      <table class="table">
-        <thead>
+<% if @recipezs.blank? %>
+  <p style = "color:red"> Recipe not found </p>
+
+<% else %>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Region</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @recipezs.each do |recipez| %>
           <tr>
-            <th>Title</th>
-            <th>Region</th>
-            <th colspan="3"></th>
+            <td><%= recipez.title %></td>
+            <td><%= recipez.region %></td>
+            <% if user_signed_in? %>
+              <td><%= link_to 'Show', recipez %></td>
+              <td><%= link_to 'Edit', edit_recipez_path(recipez) %></td>
+              <td><%= link_to 'Destroy', recipez, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% end %>
           </tr>
-        </thead>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<br>
+<% end %>
 
-        <tbody>
-          <% @recipezs.each do |recipez| %>
-            <tr>
-              <td><%= recipez.title %></td>
-              <td><%= recipez.region %></td>
-              <% if user_signed_in? %>
-                <td><%= link_to 'Show', recipez %></td>
-                <td><%= link_to 'Edit', edit_recipez_path(recipez) %></td>
-                <td><%= link_to 'Destroy', recipez, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-              <% end %>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-  <br>
-  <% end %>
-  
-  <%= link_to 'New Recipe', new_recipez_path %>
-  <br>
-  <hr />
+<%= link_to 'New Recipe', new_recipez_path %>
+<br>
+<hr />
 
 
-  <h1>Search</h1>
+<h1>Search</h1>
 
-  <%= form_with(model: @recipez, method: 'get', local: true) do |form| %>
+<%= form_with(model: @recipez, method: 'get', local: true) do |form| %>
 
-    <div class="field">
-      <%= form.label :title %>
-      <%= form.text_field :title, :value => params[:title], placeholder: 'Search Title' %>
-    </div>
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, :value => params[:title], placeholder: 'Search Title' %>
+  </div>
 
-    <div class="field">
-      <%= form.label :region %>
-      <%= form.text_field :region, :value => params[:region], placeholder: 'Search Region' %>
-    </div>
+  <div class="field">
+    <%= form.label :region %>
+    <%= form.text_field :region, :value => params[:region], placeholder: 'Search Region' %>
+  </div>
 
-    <div class="actions">
-      <%= form.submit "Search", :name=>nil %>
-    </div>
-  <% end %>
-</div>
+  <div class="actions">
+    <%= form.submit "Search", :name=>nil %>
+  </div>
+<% end %>
