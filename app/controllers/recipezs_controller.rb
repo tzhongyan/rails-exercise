@@ -32,7 +32,7 @@ class RecipezsController < ApplicationController
 
     respond_to do |format|
       if @recipez.save
-        format.html { redirect_to @recipez, notice: 'Recipez was successfully created.' }
+        format.html { redirect_to @recipez, notice: 'Recipe was successfully created.' }
         format.json { render :show, status: :created, location: @recipez }
       else
         format.html { render :new }
@@ -46,7 +46,7 @@ class RecipezsController < ApplicationController
   def update
     respond_to do |format|
       if @recipez.update(recipez_params)
-        format.html { redirect_to @recipez, notice: 'Recipez was successfully updated.' }
+        format.html { redirect_to @recipez, notice: 'Recipe was successfully updated.' }
         format.json { render :show, status: :ok, location: @recipez }
       else
         format.html { render :edit }
@@ -60,7 +60,7 @@ class RecipezsController < ApplicationController
   def destroy
     @recipez.destroy
     respond_to do |format|
-      format.html { redirect_to recipezs_url, notice: 'Recipez was successfully destroyed.' }
+      format.html { redirect_to recipezs_url, notice: 'Recipe was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
