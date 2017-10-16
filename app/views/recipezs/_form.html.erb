@@ -1,7 +1,7 @@
 <%= form_with(model: recipez, local: true) do |form| %>
   <% if recipez.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(recipez.errors.count, "error") %> prohibited this recipez from being saved:</h2>
+      <h2><%= pluralize(recipez.errors.count, "error") %> prohibited this recipe from being saved:</h2>
 
       <ul>
       <% recipez.errors.full_messages.each do |message| %>
