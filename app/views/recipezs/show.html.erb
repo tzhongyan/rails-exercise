@@ -1,14 +1,16 @@
-<p id="notice"><%= notice %></p>
+<div class = "container">
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @recipez.title %>
-</p>
+  <p>
+    <strong>Title:</strong>
+    <%= @recipez.title %>
+  </p>
 
-<p>
-  <strong>Region:</strong>
-  <%= @recipez.region %>
-</p>
+  <p>
+    <strong>Region:</strong>
+    <%= @recipez.region %>
+  </p>
 
-<%= link_to 'Edit', edit_recipez_path(@recipez) %> |
-<%= link_to 'Back', recipezs_path %>
+  <%= link_to 'Edit', edit_recipez_path(@recipez) %> |
+  <%= link_to 'Back', recipezs_path %>
+</div>

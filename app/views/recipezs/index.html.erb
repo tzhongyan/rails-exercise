@@ -1,29 +1,55 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <p id="notice"><%= notice %></p>
 
-<h1>List Recipes</h1>
+  <% if @recipezs.blank? %>
+    <h1> Recipe not found </h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Region</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <% else %>
+    <h1>List Recipes</h1>
 
-  <tbody>
-    <% @recipezs.each do |recipez| %>
-      <tr>
-        <td><%= recipez.title %></td>
-        <td><%= recipez.region %></td>
-        <td><%= link_to 'Show', recipez %></td>
-        <td><%= link_to 'Edit', edit_recipez_path(recipez) %></td>
-        <td><%= link_to 'Destroy', recipez, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Region</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
 
-<br>
+        <tbody>
+          <% @recipezs.each do |recipez| %>
+            <tr>
+              <td><%= recipez.title %></td>
+              <td><%= recipez.region %></td>
+              <td><%= link_to 'Show', recipez %></td>
+              <td><%= link_to 'Edit', edit_recipez_path(recipez) %></td>
+              <td><%= link_to 'Destroy', recipez, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <br>
 
-<%= link_to 'New Recipe', new_recipez_path %>
+  <%= link_to 'New Recipe', new_recipez_path %>
+  <br>
+  <hr />
+  <% end %>
+
+  <h1>Search</h1>
+  <%= form_tag @recipez, :method => 'get' do  %>
+
+    <div class="field">
+      <%= text_field_tag :title, params[:title], placeholder: 'Search Title' %>
+    </div>
+
+    <div class="field">
+      <%= text_field_tag :region, params[:region], placeholder: 'Search Region' %>
+    </div>
+
+    <div class="actions">
+      <%= submit_tag "Search", :name => nil %>
+    </div>
+  <% end %>
+</div>

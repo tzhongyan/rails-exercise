@@ -4,7 +4,11 @@ class RecipezsController < ApplicationController
   # GET /recipezs
   # GET /recipezs.json
   def index
-    @recipezs = Recipez.all
+    if (params[:title] || params[:region])
+      @recipezs = Recipez.search(params[:title], params[:region]).all
+    else
+      @recipezs = Recipez.all
+    end
   end
 
   # GET /recipezs/1
