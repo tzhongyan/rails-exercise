@@ -6,8 +6,10 @@
     </li>
   <% else %>
     <li>
-    <%= link_to('Login', new_user_session_path)  %>  
+      <ul><%= link_to('Sign-In', new_user_session_path)  %> </ul>
+      <ul><%= link_to('New User?', new_user_registration_path)  %> </ul>
     </li>
+    
   <% end %>
 
   <p id="notice"><%= notice %></p>
@@ -33,9 +35,11 @@
             <tr>
               <td><%= recipez.title %></td>
               <td><%= recipez.region %></td>
-              <td><%= link_to 'Show', recipez %></td>
-              <td><%= link_to 'Edit', edit_recipez_path(recipez) %></td>
-              <td><%= link_to 'Destroy', recipez, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <% if user_signed_in? %>
+                <td><%= link_to 'Show', recipez %></td>
+                <td><%= link_to 'Edit', edit_recipez_path(recipez) %></td>
+                <td><%= link_to 'Destroy', recipez, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <% end %>
             </tr>
           <% end %>
         </tbody>
