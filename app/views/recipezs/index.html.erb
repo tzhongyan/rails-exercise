@@ -1,12 +1,12 @@
 <div class="container">
   <p id="notice"><%= notice %></p>
 
+  <h1>List Recipes</h1>
+
   <% if @recipezs.blank? %>
-    <h1> Recipe not found </h1>
+    <p style = "color:red"> Recipe not found </p>
 
   <% else %>
-    <h1>List Recipes</h1>
-
     <div class="table-responsive">
       <table class="table">
         <thead>
@@ -38,18 +38,21 @@
   <% end %>
 
   <h1>Search</h1>
-  <%= form_tag @recipez, :method => 'get' do  %>
+
+  <%= form_with(model: @recipez, method: 'get', local: true) do |form| %>
 
     <div class="field">
-      <%= text_field_tag :title, params[:title], placeholder: 'Search Title' %>
+      <%= form.label :title %>
+      <%= form.text_field :title, :value => params[:title], placeholder: 'Search Title' %>
     </div>
 
     <div class="field">
-      <%= text_field_tag :region, params[:region], placeholder: 'Search Region' %>
+      <%= form.label :region %>
+      <%= form.text_field :region, :value => params[:region], placeholder: 'Search Region' %>
     </div>
 
     <div class="actions">
-      <%= submit_tag "Search", :name => nil %>
+      <%= form.submit "Search", :name=>nil %>
     </div>
   <% end %>
 </div>
