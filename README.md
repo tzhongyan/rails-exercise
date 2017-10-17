@@ -4,8 +4,8 @@ This repo is a code dump for tasks in my uni. Its sheer purpose is to enable me 
 # Software Requirements
 Not really requirements, just the versions of softwares that I'm using which are working
 
-* [https://www.ruby-lang.org/en/downloads/](Ruby 2.4.1)
-* [https://rubygems.org/pages/download](gem 2.6.12) (should automatically installed when you installed ruby)
+* [Ruby 2.4.1](https://www.ruby-lang.org/en/downloads/)
+* [Gem 2.6.12](https://rubygems.org/pages/download) (should automatically installed when you installed ruby)
 
 # Running the Application
 Assuming you are running on Ubuntu (because that's what I'm running, and I think most unix will run fine as well) and had the stuff above installed, you should first, obviously, clone the repository:
