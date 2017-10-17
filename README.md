@@ -1,24 +1,46 @@
-# README
+# Rails Task for COS30041 
+This repo is a code dump for tasks in my uni. Its sheer purpose is to enable me to work on the same project across different devices, like you know, school lab's bloody computers.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Software Requirements
+Not really requirements, just the versions of softwares that I'm using which are working
 
-Things you may want to cover:
+* [https://www.ruby-lang.org/en/downloads/](Ruby 2.4.1)
+* [https://rubygems.org/pages/download](gem 2.6.12) (should automatically installed when you installed ruby)
 
-* Ruby version
+# Running the Application
+Assuming you are running on Ubuntu (because that's what I'm running, and I think most unix will run fine as well) and had the stuff above installed, you should first, obviously, clone the repository:
+```
+git clone git@github.com:tzhongyan/rails-exercise.git
+```
 
-* System dependencies
+Then, change your working directory into the repository:
+```
+cd rails-exercise
+```
 
-* Configuration
+Install the required gems, this might take a while if no previous rails has been installed.
+```
+bundler install
+```
+If you do not have bundler, perform `gem install bundler` and perform the same shit again.
 
-* Database creation
+Migrate and seeding the database:
+```
+rake db:migrate
+rake db:seed
+```
 
-* Database initialization
+Then you are free to run the shit
+```
+rails server
+```
 
-* How to run the test suite
+The thing will be running on http://localhost:3000 on rails default. Obviously, before serving you should put it into proper environment and stuff. Go google it if in doubt :3
 
-* Services (job queues, cache servers, search engines, etc.)
+# Tests
+Test? What test?
 
-* Deployment instructions
-
-* ...
+# Important Tags
+- **t6-finished**: Marks the finishing point for all of Task 6
+- **task-7.1**: Marks the finishing point for Task 7.1
+- **task-7.2**: Marks the finishing point for Task 7.2
