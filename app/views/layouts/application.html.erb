@@ -13,14 +13,28 @@
 
   <body>
     <!-- Header -->
-      <div class = "jumbotron">
-        <div class = "container">
-          <h1>Website of Recipe</h1>
-          <p>This website contains recipe, and stuff</p>
-        </div>
+    <div class = "jumbotron">
+      <div class = "container">
+        <h1>Website of Recipe</h1>
+        <p>This website contains recipe, and stuff</p>
       </div>
+    </div>
+
+
     
+
+
     <div class = "container">
+    <span class = "pull-right">
+      <% if user_signed_in? %>
+        <%= link_to('Logout', destroy_user_session_path, method: :delete) %>        
+      <% else %>
+          <%= link_to('Sign-In', new_user_session_path)  %> </ul> |
+          <%= link_to('New User?', new_user_registration_path)  %> </ul>
+        
+      <% end %>
+    </span>
+
       <p id="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
 

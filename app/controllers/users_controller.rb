@@ -4,8 +4,8 @@ class UsersController < ApplicationController
     # GET /users
     # GET /users.json
     def index
-      if (params[:title] || params[:region])
-        @users = User.search(params[:title], params[:region]).all
+      if !current_user.try(:admin?)
+        render(:file => File.join(Rails.root, 'public/403.html'), :status => 403, :layout => false)
       else
         @users = User.all
       end
