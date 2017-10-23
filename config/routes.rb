@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   }
 
   resources :recipezs
+  resources :users
   root 'recipezs#index'
 end

@@ -1,0 +1,27 @@
+<p>
+  <strong>User ID:</strong>
+  <%= @user.id %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <strong>Created at: </strong>
+  <%= @user.created_at %>
+</p>
+
+<p>
+  <strong>Updated at: </strong>
+  <%= @user.updated_at %>
+</p>
+
+<p>
+  <strong>Is admin? </strong>
+  <%= @user.admin %>
+</p>
+
+<%= link_to 'Destroy', @user, method: :delete, data: { confirm: 'Are you sure?' } %> | <%= link_to 'Back', users_path %>
+
