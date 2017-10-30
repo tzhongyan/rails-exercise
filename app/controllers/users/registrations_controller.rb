@@ -39,6 +39,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def destroy
   #   super
   # end
+  def destroy 
+    if !verify_recaptcha
+      flash.delete :recaptcha_error
+      resource.valid?
+      resource.errors.add(:base, "There was an error with recaptcha below. Please retry.")
+      clean_up_passwords(resource)
+      respond_with_navigational(resource) { render :edit}
+    else
+      flash.delete :recaptcha_error
+      super
+    end
+  end
 
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign

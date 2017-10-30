@@ -38,6 +38,14 @@
 
 <h3>Cancel my account</h3>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :delete}) do |f| %>
+  <%= devise_error_messages! %>
+    <div class="recaptcha">
+        <%= recaptcha_tags %>
+    </div>
+
+    <%= f.submit "Cancel my account", data: { confirm: "Are you sure?" } %>
+
+<% end %>
 
 <%= link_to "Back", :back %>
