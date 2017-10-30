@@ -44,7 +44,7 @@ class UsersController < ApplicationController
       @user = User.new(user_params)
   
       respond_to do |format|
-        if @user.save
+        if if verify_recaptcha(model:@user) && @user.save
           format.html { redirect_to @user, notice: 'user was successfully created.' }
           format.json { render :show, status: :created, location: @user }
         else
@@ -89,4 +89,4 @@ class UsersController < ApplicationController
         params.require(:user).permit(:password, :password_confirmation)
       end
   end
-  
+ end 

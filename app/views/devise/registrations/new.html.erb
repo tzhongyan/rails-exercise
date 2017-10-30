@@ -21,9 +21,15 @@
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
+  <div class="field">
+     <%= flash[:recaptcha_error] %>
+     <%= recaptcha_tags %>
+  </div>
+
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
-<% end %>
 
+<% end %>
+<script src='https://www.google.com/recaptcha/api.js'></script>
 <%= render "devise/shared/links" %>

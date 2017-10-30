@@ -2,6 +2,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
+  def create
+    if !verify_recaptcha
+      flash.delete :recaptcha_error
+      build_resource(sign_up_params)
+      resource.valid?
+      resource.errors.add(:base, "There was an error with recaptcha below. Please retry.")
+      clean_up_passwords(resource)
+      respond_with_navigational(resource) { render :new }
+    else
+      flash.delete :recaptcha_error
+      super
+    end
+  end
   # GET /resource/sign_up
   # def new
   #   super

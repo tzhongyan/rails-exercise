@@ -55,3 +55,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # t7
 gem 'devise'
+
+# env
+gem 'dotenv-rails', :require => 'dotenv/rails-now'
+# Recaptcha service
+gem 'recaptcha', require: 'recaptcha/rails'
