@@ -3,7 +3,11 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
 
-  resources :recipezs
+  authenticate :user do
+    resources :recipezs, only: [:new, :create, :edit, :update, :destroy, :show]
+  end
+  resources :recipezs, only: [:index]
+
   resource :user, only: [:edit, :destroy] do
     collection do
       patch 'update_password'
